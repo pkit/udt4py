@@ -1,0 +1,16 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+    "Cython"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.cibuildwheel]
+test-skip = "*"
+archs = ["auto64"]
+build = ["cp36-*", "cp37-*", "cp38-*"]
+before-all = [
+    "yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
+    "yum install -y udt-devel"
+]
